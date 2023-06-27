@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ludo Game</title>
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 Ludo Game 🎲</h1>
+
+        <div class="dice">
+            <h2>Player 1</h2>
+            <img src="dice/dice1.png" alt="" id="check1">
+        </div>
+        <div class="dice">
+            <h2>Player 2</h2>
+            <img src="dice/dice6.png" alt="" id="check2">
+        </div>
+
+        <div>
+            <button onclick="game()">chick Me</button>
+        </div>
+    </div>
+<script>
+    game = () =>{
+        makesound()
+        const Player1=Math.floor(Math.random()*6)+1;
+        const P1dice = `dice/dice${Player1}.png`;
+        document.getElementById('check1').setAttribute('src',P1dice)
+
+        const Player2=Math.floor(Math.random()*6)+1;
+        const P2dice = `dice/dice${Player2}.png`;
+        document.getElementById('check2').setAttribute('src',P2dice)
+
+        if (Player1>Player2){
+            document.querySelector('h1').innerHTML="Player1 Won🥳"
+        }
+        else if (Player1<Player2){
+            document.querySelector('h1').innerHTML="Player2 Won🥳"
+        }
+        else{
+            document.querySelector('h1').innerHTML="Oops 😲 Draw"
+        }
+    }
+    function makesound(){
+        let audio=new Audio("dice/sound.mp3");
+        audio.play();
+    }
+</script>
+</body>
+</html>
